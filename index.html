@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SnailyCAD Troubleshooting Guide</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -14,10 +12,8 @@
         extend: {
           colors: {
             primary: {
-              "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe",
-              "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6",
-              "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af",
-              "900": "#1e3a8a", "950": "#172554"
+              500: '#3b82f6',
+              700: '#1d4ed8',
             }
           }
         }
@@ -25,128 +21,98 @@
     }
   </script>
 </head>
+<body class="bg-gray-900 text-gray-100 font-sans">
 
-<body class="bg-gray-900 text-gray-100">
-  <!-- Navbar -->
-  <nav class="bg-gray-800 border-b border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <!-- Header -->
+  <header class="bg-gray-800 border-b border-gray-700">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
       <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-          <span class="text-white font-bold text-sm">SC</span>
+        <div class="bg-primary-500 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold">
+          SC
         </div>
-        <span class="text-2xl font-semibold text-white">SnailyCAD Troubleshooting</span>
+        <h1 class="text-2xl font-semibold">SnailyCAD Troubleshooting</h1>
       </div>
-      <div class="hidden md:block">
-        <div class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          <a href="index.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Overview</a>
-          <a href="Installation-Issues.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Installation</a>
-          <a href="database.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Database</a>
-          <a href="api.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">API Issues</a>
-          <a href="discord.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Discord Bot</a>
-          <a href="performance.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Performance</a>
-          <a href="permissions.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Permissions</a>
-        </div>
-      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-primary-500">Overview</a>
+        <a href="Installation-Issues.html" class="hover:text-primary-500">Installation</a>
+        <a href="database.html" class="hover:text-primary-500">Database</a>
+        <a href="api.html" class="hover:text-primary-500">API</a>
+        <a href="discord.html" class="hover:text-primary-500">Discord Bot</a>
+        <a href="performance.html" class="hover:text-primary-500">Performance</a>
+        <a href="permissions.html" class="hover:text-primary-500">Permissions</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <div class="flex min-h-screen">
     <!-- Sidebar -->
-    <aside class="w-64 bg-gray-800 border-r border-gray-700">
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-200 mb-4">Troubleshooting Sections</h3>
-        <nav class="space-y-2">
-          <button onclick="showSection('overview')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            📋 Overview
-          </button>
-          <button onclick="showSection('installation')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            🔧 Installation Issues
-          </button>
-          <button onclick="showSection('database')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            🗄️ Database Problems
-          </button>
-          <button onclick="showSection('api')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            🌐 API Issues
-          </button>
-          <button onclick="showSection('discord')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            🤖 Discord Bot
-          </button>
-          <button onclick="showSection('performance')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            ⚡ Performance
-          </button>
-          <button onclick="showSection('permissions')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
-            🔐 Permissions
-          </button>
-        </nav>
-      </div>
+    <aside class="w-64 bg-gray-800 border-r border-gray-700 p-4 space-y-2">
+      <h2 class="text-lg font-semibold mb-4">Sections</h2>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-overview">📋 Overview</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-installation">🔧 Installation</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-database">🗄️ Database</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-api">🌐 API</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-discord">🤖 Discord Bot</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-performance">⚡ Performance</button>
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-gray-700" data-target="section-permissions">🔐 Permissions</button>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-8 space-y-8">
-      <!-- All sections go here -->
-      <div id="overview" class="section">
-        <h1 class="text-4xl font-bold text-gray-100 mb-4">SnailyCAD Troubleshooting Guide</h1>
-        <p class="text-lg text-gray-300">Welcome to the SnailyCAD troubleshooting guide. Use the sidebar to navigate through different common issues and find step-by-step resolutions.</p>
-      </div>
+    <main class="flex-1 p-6 space-y-10">
+      <section id="section-overview">
+        <h2 class="text-3xl font-bold mb-2">📋 Overview</h2>
+        <p class="text-gray-300">Welcome to the SnailyCAD Troubleshooting Guide. Use the sidebar to explore solutions to common problems.</p>
+      </section>
 
-      <div id="installation" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">🔧 Installation Issues</h2>
-        <p class="text-gray-400">Add installation-related troubleshooting content here.</p>
-      </div>
+      <section id="section-installation" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">🔧 Installation</h2>
+        <p class="text-gray-300">Installation-related issues and solutions will appear here.</p>
+      </section>
 
-      <div id="database" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">🗄️ Database Problems</h2>
-        <p class="text-gray-400">Add database troubleshooting content here.</p>
-      </div>
+      <section id="section-database" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">🗄️ Database</h2>
+        <p class="text-gray-300">Troubleshooting for database connection, migration, or other errors.</p>
+      </section>
 
-      <div id="api" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">🌐 API Issues</h2>
-        <p class="text-gray-400">Add API troubleshooting content here.</p>
-      </div>
+      <section id="section-api" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">🌐 API Issues</h2>
+        <p class="text-gray-300">Resolve issues related to API access, authentication, and errors.</p>
+      </section>
 
-      <div id="discord" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">🤖 Discord Bot</h2>
-        <p class="text-gray-400">Add Discord bot troubleshooting content here.</p>
-      </div>
+      <section id="section-discord" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">🤖 Discord Bot</h2>
+        <p class="text-gray-300">Learn how to fix issues related to the Discord bot integration.</p>
+      </section>
 
-      <div id="performance" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">⚡ Performance</h2>
-        <p class="text-gray-400">Add performance optimization tips here.</p>
-      </div>
+      <section id="section-performance" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">⚡ Performance</h2>
+        <p class="text-gray-300">Improve performance and reduce lag in your CAD system.</p>
+      </section>
 
-      <div id="permissions" class="section hidden">
-        <h2 class="text-3xl font-semibold mb-4">🔐 Permissions</h2>
-        <p class="text-gray-400">Add permission troubleshooting content here.</p>
-      </div>
+      <section id="section-permissions" class="hidden">
+        <h2 class="text-3xl font-bold mb-2">🔐 Permissions</h2>
+        <p class="text-gray-300">Common problems with user roles and access rights.</p>
+      </section>
     </main>
   </div>
 
-  <!-- JavaScript to switch sections -->
+  <!-- JS to toggle sections -->
   <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('.section');
-      sections.forEach(section => {
-        section.classList.add('hidden');
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        document.querySelectorAll('main section').forEach(sec => {
+          sec.classList.add('hidden');
+        });
+        document.getElementById(targetId).classList.remove('hidden');
+
+        document.querySelectorAll('.nav-btn').forEach(b => {
+          b.classList.remove('bg-gray-700', 'text-primary-500');
+        });
+        btn.classList.add('bg-gray-700', 'text-primary-500');
       });
-
-      const active = document.getElementById(id);
-      if (active) {
-        active.classList.remove('hidden');
-      }
-
-      // Optional: highlight active button
-      document.querySelectorAll('.section-btn').forEach(btn => {
-        btn.classList.remove('bg-gray-700', 'text-blue-400');
-      });
-
-      const activeBtn = [...document.querySelectorAll('.section-btn')].find(btn =>
-        btn.textContent.trim().includes(document.getElementById(id).querySelector('h2, h1').textContent.trim().split(" ")[0])
-      );
-
-      if (activeBtn) {
-        activeBtn.classList.add('bg-gray-700', 'text-blue-400');
-      }
-    }
+    });
   </script>
+
 </body>
 </html>
