@@ -1,352 +1,152 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnailyCAD Troubleshooting Guide</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
-                    }
-                }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnailyCAD Troubleshooting Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe",
+              "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6",
+              "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af",
+              "900": "#1e3a8a", "950": "#172554"
             }
+          }
         }
-    </script>
+      }
+    }
+  </script>
 </head>
+
 <body class="bg-gray-900 text-gray-100">
-<!-- Navbar -->
-<nav class="bg-gray-800 border-b border-gray-700">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <div class="flex items-center space-x-3">
-      <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-        <span class="text-white font-bold text-sm">SC</span>
+  <!-- Navbar -->
+  <nav class="bg-gray-800 border-b border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-sm">SC</span>
+        </div>
+        <span class="text-2xl font-semibold text-white">SnailyCAD Troubleshooting</span>
       </div>
-      <span class="text-2xl font-semibold text-white">SnailyCAD Troubleshooting</span>
-    </div>
-    <div class="hidden md:block">
-      <div class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <a href="index.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Overview</a>
-        <a href="Installation-Issues.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Installation</a>
-        <a href="database.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Database</a>
-        <a href="api.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">API Issues</a>
-        <a href="discord.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Discord Bot</a>
-        <a href="performance.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Performance</a>
-        <a href="permissions.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Permissions</a>
+      <div class="hidden md:block">
+        <div class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <a href="index.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Overview</a>
+          <a href="Installation-Issues.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Installation</a>
+          <a href="database.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Database</a>
+          <a href="api.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">API Issues</a>
+          <a href="discord.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Discord Bot</a>
+          <a href="performance.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Performance</a>
+          <a href="permissions.html" class="block py-2 px-3 text-gray-300 hover:text-blue-400 transition-colors">Permissions</a>
+        </div>
       </div>
     </div>
+  </nav>
+
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 border-r border-gray-700">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-200 mb-4">Troubleshooting Sections</h3>
+        <nav class="space-y-2">
+          <button onclick="showSection('overview')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            📋 Overview
+          </button>
+          <button onclick="showSection('installation')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            🔧 Installation Issues
+          </button>
+          <button onclick="showSection('database')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            🗄️ Database Problems
+          </button>
+          <button onclick="showSection('api')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            🌐 API Issues
+          </button>
+          <button onclick="showSection('discord')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            🤖 Discord Bot
+          </button>
+          <button onclick="showSection('performance')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            ⚡ Performance
+          </button>
+          <button onclick="showSection('permissions')" class="section-btn w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors">
+            🔐 Permissions
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 space-y-8">
+      <!-- All sections go here -->
+      <div id="overview" class="section">
+        <h1 class="text-4xl font-bold text-gray-100 mb-4">SnailyCAD Troubleshooting Guide</h1>
+        <p class="text-lg text-gray-300">Welcome to the SnailyCAD troubleshooting guide. Use the sidebar to navigate through different common issues and find step-by-step resolutions.</p>
+      </div>
+
+      <div id="installation" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">🔧 Installation Issues</h2>
+        <p class="text-gray-400">Add installation-related troubleshooting content here.</p>
+      </div>
+
+      <div id="database" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">🗄️ Database Problems</h2>
+        <p class="text-gray-400">Add database troubleshooting content here.</p>
+      </div>
+
+      <div id="api" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">🌐 API Issues</h2>
+        <p class="text-gray-400">Add API troubleshooting content here.</p>
+      </div>
+
+      <div id="discord" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">🤖 Discord Bot</h2>
+        <p class="text-gray-400">Add Discord bot troubleshooting content here.</p>
+      </div>
+
+      <div id="performance" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">⚡ Performance</h2>
+        <p class="text-gray-400">Add performance optimization tips here.</p>
+      </div>
+
+      <div id="permissions" class="section hidden">
+        <h2 class="text-3xl font-semibold mb-4">🔐 Permissions</h2>
+        <p class="text-gray-400">Add permission troubleshooting content here.</p>
+      </div>
+    </main>
   </div>
-</nav>
 
+  <!-- JavaScript to switch sections -->
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.add('hidden');
+      });
 
-    <div class="flex min-h-screen">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-gray-800 border-r border-gray-700">
-            <div class="p-4">
-                <h3 class="text-lg font-semibold text-gray-200 mb-4">Troubleshooting Sections</h3>
-                <nav class="space-y-2">
-                    <button onclick="showSection('overview')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        📋 Overview
-                    </button>
-                    <button onclick="showSection('installation')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        🔧 Installation Issues
-                    </button>
-                    <button onclick="showSection('database')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        🗄️ Database Problems
-                    </button>
-                    <button onclick="showSection('api')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        🌐 API Issues
-                    </button>
-                    <button onclick="showSection('discord')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        🤖 Discord Bot
-                    </button>
-                    <button onclick="showSection('performance')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        ⚡ Performance
-                    </button>
-                    <button onclick="showSection('permissions')" class="w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-blue-400 rounded-lg transition-colors section-btn">
-                        🔐 Permissions
-                    </button>
-                </nav>
-            </div>
-        </aside>
+      const active = document.getElementById(id);
+      if (active) {
+        active.classList.remove('hidden');
+      }
 
-        <!-- Main Content -->
-        <main class="flex-1 p-8">
-            <!-- Overview Section -->
-            <div id="overview" class="section">
-                <div class="mb-8">
-                    <h1 class="text-4xl font-bold text-gray-100 mb-4">SnailyCAD Troubleshooting Guide</h1>
-                    <p class="text-lg text-gray-300 mb-6">
-                        <em class="text-blue-400">Add your welcome message and overview here</em>
-                    </p>
-                </div>
+      // Optional: highlight active button
+      document.querySelectorAll('.section-btn').forEach(btn => {
+        btn.classList.remove('bg-gray-700', 'text-blue-400');
+      });
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                        <h3 class="text-xl font-semibold text-gray-100 mb-2">🔧 Installation</h3>
-                        <p class="text-gray-300 text-sm"><em>Brief description of installation issues</em></p>
-                    </div>
-                    <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                        <h3 class="text-xl font-semibold text-gray-100 mb-2">🗄️ Database</h3>
-                        <p class="text-gray-300 text-sm"><em>Brief description of database problems</em></p>
-                    </div>
-                    <div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                        <h3 class="text-xl font-semibold text-gray-100 mb-2">🌐 API Issues</h3>
-                        <p class="text-gray-300 text-sm"><em>Brief description of API problems</em></p>
-                    </div>
-                </div>
-            </div>
+      const activeBtn = [...document.querySelectorAll('.section-btn')].find(btn =>
+        btn.textContent.trim().includes(document.getElementById(id).querySelector('h2, h1').textContent.trim().split(" ")[0])
+      );
 
-            <!-- Installation Issues Section -->
-            <div id="installation" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">Installation Issues</h1>
-                
-                <!-- Issue 1 -->
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">📦 Node.js Version Compatibility</h2>
-                    
-                    <!-- Screenshot placeholder -->
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Error message when wrong Node.js version is used</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Error message screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Solution text -->
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-blue-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm mb-2"><em>Add step-by-step instructions here:</em></p>
-                        <div class="text-gray-400 text-sm space-y-1">
-                            <p>• Step 1: <em>Describe first step</em></p>
-                            <p>• Step 2: <em>Describe second step</em></p>
-                            <p>• Step 3: <em>Describe third step</em></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Issue 2 -->
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">🔌 Port Already in Use</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Port already in use error</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Port error screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-green-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your port troubleshooting steps here</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Database Issues Section -->
-            <div id="database" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">Database Problems</h1>
-                
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">🔗 Connection Failed</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Database connection error</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Database error screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-red-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your database troubleshooting steps here</em></p>
-                    </div>
-                </div>
-
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">📊 Migration Issues</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Migration error message</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Migration error screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-yellow-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your migration troubleshooting steps here</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- API Issues Section -->
-            <div id="api" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">API Issues</h1>
-                
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">🚫 401 Unauthorized</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: 401 error in browser/console</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">401 error screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-purple-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your API authentication troubleshooting steps here</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Discord Bot Section -->
-            <div id="discord" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">Discord Bot Issues</h1>
-                
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">🤖 Bot Not Responding</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Bot offline or not responding in Discord</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Discord bot issue screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-indigo-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your Discord bot troubleshooting steps here</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Performance Section -->
-            <div id="performance" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">Performance Issues</h1>
-                
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">⚡ Slow Loading Times</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Performance metrics or loading indicators</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Performance issue screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-orange-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your performance optimization steps here</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Permissions Section -->
-            <div id="permissions" class="section hidden">
-                <h1 class="text-4xl font-bold text-gray-100 mb-6">Permission Issues</h1>
-                
-                <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-100 mb-4">🔐 Access Denied</h2>
-                    
-                    <div class="mb-6">
-                        <p class="text-sm text-blue-400 mb-2"><em>Screenshot: Permission denied error message</em></p>
-                        <div class="bg-gray-700 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center">
-                            <div class="text-gray-400">
-                                <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                                <p class="text-lg font-medium">Add Screenshot Here</p>
-                                <p class="text-sm">Permission error screenshot</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-900 rounded-lg p-4 border-l-4 border-pink-500">
-                        <h3 class="text-lg font-semibold text-gray-100 mb-2">Solution:</h3>
-                        <p class="text-gray-300 text-sm"><em>Add your permission troubleshooting steps here</em></p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.remove('hidden');
-            
-            // Update active button styling
-            const buttons = document.querySelectorAll('.section-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white');
-                btn.classList.add('text-gray-300');
-            });
-            
-            // Highlight active button
-            event.target.classList.remove('text-gray-300');
-            event.target.classList.add('bg-blue-600', 'text-white');
-        }
-
-        // Show overview by default
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.section-btn').click();
-        });
-    </script>
+      if (activeBtn) {
+        activeBtn.classList.add('bg-gray-700', 'text-blue-400');
+      }
+    }
+  </script>
 </body>
 </html>
